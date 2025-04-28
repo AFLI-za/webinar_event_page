@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+  <!-- Circle with people icon -->
+  <circle cx="40" cy="50" r="30" fill="#971c61" />
+  <g fill="#ffffff">
+    <circle cx="40" cy="30" r="8" />
+    <path d="M30,45 C30,40 35,35 40,35 C45,35 50,40 50,45 C50,55 45,65 40,65 C35,65 30,55 30,45 Z" />
+    <circle cx="25" cy="45" r="6" />
+    <path d="M18,55 C18,50 22,47 25,47 C28,47 32,50 32,55 C32,62 28,70 25,70 C22,70 18,62 18,55 Z" />
+    <circle cx="55" cy="45" r="6" />
+    <path d="M48,55 C48,50 52,47 55,47 C58,47 62,50 62,55 C62,62 58,70 55,70 C52,70 48,62 48,55 Z" />
+  </g>
+  
+  <!-- Vertical line separator -->
+  <line x1="80" y1="20" x2="80" y2="80" stroke="#971c61" stroke-width="2" />
+  
+  <!-- AFLI text -->
+  <path d="M110,30 L120,70 L130,70 L140,30 H130 L125,55 L120,30 H110 Z" fill="#971c61" />
+  <path d="M145,30 H175 V40 H155 V45 H170 V55 H155 V60 H175 V70 H145 V30 Z" fill="#971c61" />
+  <path d="M180,30 H190 V60 H210 V70 H180 V30 Z" fill="#971c61" />
+  <path d="M215,30 H225 V70 H215 V30 Z" fill="#971c61" />
+  
+  <!-- African Leadership Institute text -->
+  <text x="240" y="40" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#971c61">AFRICAN</text>
+  <text x="240" y="60" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#971c61">LEADERSHIP</text>
+  <text x="240" y="80" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#971c61">INSTITUTE</text>
+</svg>
