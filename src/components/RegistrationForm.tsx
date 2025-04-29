@@ -273,21 +273,24 @@ export default function RegistrationForm() {
           >
             Home
           </Link>
-          <Link
-            className="text-sm hover:underline hover:text-[#971c61]"
-            href="/admin"
-          >
-            Admin
-          </Link>
           <a
             className="text-sm hover:underline hover:text-[#971c61]"
-            href="#"
+            href="https://alinstitute.org/about-afli/contact"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Contact Us
           </a>
         </div>
         <div className="mt-4 text-sm text-gray-500">
           © 2025 African Leadership Institute. All rights reserved.
+        </div>
+        <div className="mt-4 text-xs text-gray-500 max-w-2xl mx-auto px-4 leading-relaxed">
+          This form is part of AFLI's ongoing program operations.
+          All data is handled in accordance with AFLI's privacy policies and applicable regulations (GDPR and POPIA).
+          <a href="https://alinstitute.org/homepage/privacy" className="text-[#971c61] hover:underline ml-1" target="_blank" rel="noopener noreferrer">
+            View Privacy Policy
+          </a>
         </div>
       </footer>
     </div>

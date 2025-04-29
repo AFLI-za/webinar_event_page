@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     // Check if email already exists
     const { data: existingUser } = await supabase
-      .from('registrations')
+      .from('registration')
       .select('*')
       .eq('email', email)
       .single();
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 
     // Insert into Supabase with only the existing fields
     const { data, error } = await supabase
-      .from('registrations')
+      .from('registration')
       .insert([{
         name,
         email

@@ -20,19 +20,19 @@ async function testSupabaseConnection() {
     
     // Test 1: Check if we can connect to Supabase
     const { data: tableData, error: tableError } = await supabase
-      .from('registrations')
+      .from('registration')
       .select('*')
       .limit(1);
     
     if (tableError) {
       if (tableError.code === '42P01') {
-        console.error('Error: The "registrations" table does not exist in your Supabase database.');
+        console.error('Error: The "registration" table does not exist in your Supabase database.');
         console.log('Please create the table as described in the README.md file.');
       } else {
-        console.error('Error accessing the "registrations" table:', tableError);
+        console.error('Error accessing the "registration" table:', tableError);
       }
     } else {
-      console.log('✅ Successfully connected to Supabase and accessed the "registrations" table.');
+      console.log('✅ Successfully connected to Supabase and accessed the "registration" table.');
       console.log(`Found ${tableData.length} records in the table.`);
       
       // Test 2: Try inserting a test record
@@ -41,7 +41,7 @@ async function testSupabaseConnection() {
       const testEmail = `test-${Date.now()}@example.com`;
       
       const { data: insertData, error: insertError } = await supabase
-        .from('registrations')
+        .from('registration')
         .insert([{ name: testName, email: testEmail }])
         .select();
       
@@ -54,7 +54,7 @@ async function testSupabaseConnection() {
         // Test 3: Delete the test record
         console.log('\nCleaning up test data...');
         const { error: deleteError } = await supabase
-          .from('registrations')
+          .from('registration')
           .delete()
           .eq('email', testEmail);
         
