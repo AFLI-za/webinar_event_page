@@ -85,12 +85,6 @@ export const createConfirmationEmail = async (name: string, email: string) => {
 
 
 
-          <p><strong>Important:</strong> You will receive reminder emails:</p>
-          <ul>
-            <li>One week before the event</li>
-            <li>One day before the event</li>
-            <li>One hour before the event</li>
-          </ul>
 
           <p>If you have any questions, please don't hesitate to contact us.</p>
           <p>Best regards,<br>The AFLI Events Team</p>
