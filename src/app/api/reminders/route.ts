@@ -38,11 +38,11 @@ export async function POST(request: NextRequest) {
       try {
         // Get all registrations
         const { data: allRegistrations, error: regError } = await supabase
-          .from('registrations')
+          .from('registration')
           .select('*');
 
         if (regError) {
-          console.error('Supabase error (fetching registrations):', regError);
+          console.error('Supabase error (fetching registration):', regError);
         } else if (allRegistrations && allRegistrations.length > 0) {
           // Send week reminders to all registrations
           // In a production environment, you would check the reminder_week_sent field
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
               // Note: We're not updating the reminder status since the column might not exist yet
               // In production, you would add this:
               // await supabase
-              //   .from('registrations')
+              //   .from('registration')
               //   .update({ reminder_week_sent: true })
               //   .eq('id', registration.id);
 
@@ -76,11 +76,11 @@ export async function POST(request: NextRequest) {
       try {
         // Get all registrations
         const { data: allRegistrations, error: regError } = await supabase
-          .from('registrations')
+          .from('registration')
           .select('*');
 
         if (regError) {
-          console.error('Supabase error (fetching registrations):', regError);
+          console.error('Supabase error (fetching registration):', regError);
         } else if (allRegistrations && allRegistrations.length > 0) {
           // Send day reminders to all registrations
           for (const registration of allRegistrations) {
@@ -106,11 +106,11 @@ export async function POST(request: NextRequest) {
       try {
         // Get all registrations
         const { data: allRegistrations, error: regError } = await supabase
-          .from('registrations')
+          .from('registration')
           .select('*');
 
         if (regError) {
-          console.error('Supabase error (fetching registrations):', regError);
+          console.error('Supabase error (fetching registration):', regError);
         } else if (allRegistrations && allRegistrations.length > 0) {
           // Send hour reminders to all registrations
           for (const registration of allRegistrations) {

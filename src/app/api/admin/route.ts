@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
     // Parse request body
     const body = await request.json();
     const { password } = body;
-    
+
     // Verify admin password
     if (password !== process.env.ADMIN_PASSWORD) {
       return NextResponse.json(
@@ -14,13 +14,13 @@ export async function POST(request: NextRequest) {
         { status: 401 }
       );
     }
-    
+
     // Fetch all registrations
     const { data, error } = await supabase
-      .from('registrations')
+      .from('registration')
       .select('*')
       .order('created_at', { ascending: false });
-      
+
     if (error) {
       console.error('Supabase error:', error);
       return NextResponse.json(
@@ -28,9 +28,9 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
-    
+
     return NextResponse.json({ registrations: data });
-    
+
   } catch (error) {
     console.error('Admin API error:', error);
     return NextResponse.json(

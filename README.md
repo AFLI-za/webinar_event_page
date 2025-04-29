@@ -63,7 +63,7 @@ REMINDER_API_KEY=your_reminder_api_key
 
 4. Set up Supabase:
    - Create a new project in Supabase
-   - Create a `registrations` table with the following columns:
+   - Create a `registration` table with the following columns:
      - `id` (UUID, Primary Key)
      - `name` (Text)
      - `email` (Text)
@@ -78,7 +78,7 @@ REMINDER_API_KEY=your_reminder_api_key
    - You can add these columns later through the Supabase dashboard:
      1. Go to your Supabase project
      2. Navigate to the "Table Editor" section
-     3. Select the "registrations" table
+     3. Select the "registration" table
      4. Click "Add Column" for each of the fields above
      5. Set the type to "boolean" and default value to "false"
 
