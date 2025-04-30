@@ -5,6 +5,9 @@ export type Registration = {
   id?: string;
   name: string;
   email: string;
+  organization: string;
+  city: string;
+  country: string;
   created_at?: string;
   reminder_week_sent?: boolean;
   reminder_day_sent?: boolean;

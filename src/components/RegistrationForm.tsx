@@ -11,6 +11,9 @@ import Image from 'next/image';
 const registrationSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
+  organization: z.string().optional(),
+  city: z.string().optional(),
+  country: z.string().optional(),
 });
 
 type RegistrationFormData = z.infer<typeof registrationSchema>;
@@ -51,9 +54,10 @@ export default function RegistrationForm() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isValid, isDirty },
   } = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
+    mode: "onChange"
   });
 
   const onSubmit = async (data: RegistrationFormData) => {
@@ -135,7 +139,8 @@ export default function RegistrationForm() {
         {/* Decorative element */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-[#971c61] opacity-5 rounded-full transform translate-x-16 -translate-y-16"></div>
 
-        <h2 className="text-xl sm:text-2xl font-bold mb-6 text-center text-gray-800">Register for the Reflections on the Africa Jobs Scenarios Report</h2>
+        <h2 className="text-xl sm:text-2xl font-bold mb-2 text-center text-gray-800">Register for the Reflections on the Africa Jobs Scenarios Report</h2>
+        <p className="text-sm text-center text-gray-500 mb-6">All fields are required to complete registration</p>
 
         {/* Success popup */}
         {showPopup && submitStatus.success && (
@@ -215,7 +220,7 @@ export default function RegistrationForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-5">
             <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
-              Full Name
+              Full Name <span className="text-red-500">*</span>
             </label>
             <input
               id="name"
@@ -229,9 +234,9 @@ export default function RegistrationForm() {
             )}
           </div>
 
-          <div className="mb-6">
+          <div className="mb-5">
             <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-              Email
+              Email <span className="text-red-500">*</span>
             </label>
             <input
               id="email"
@@ -245,9 +250,57 @@ export default function RegistrationForm() {
             )}
           </div>
 
+          <div className="mb-5">
+            <label htmlFor="organization" className="block text-gray-700 font-medium mb-2">
+              Organization <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="organization"
+              type="text"
+              {...register('organization')}
+              className="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#971c61] focus:border-transparent transition"
+              placeholder="Your Organization"
+            />
+            {errors.organization && (
+              <p className="text-red-600 text-sm mt-1">{errors.organization.message}</p>
+            )}
+          </div>
+
+          <div className="mb-5">
+            <label htmlFor="city" className="block text-gray-700 font-medium mb-2">
+              City <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="city"
+              type="text"
+              {...register('city')}
+              className="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#971c61] focus:border-transparent transition"
+              placeholder="Your City"
+            />
+            {errors.city && (
+              <p className="text-red-600 text-sm mt-1">{errors.city.message}</p>
+            )}
+          </div>
+
+          <div className="mb-6">
+            <label htmlFor="country" className="block text-gray-700 font-medium mb-2">
+              Country <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="country"
+              type="text"
+              {...register('country')}
+              className="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#971c61] focus:border-transparent transition"
+              placeholder="Your Country"
+            />
+            {errors.country && (
+              <p className="text-red-600 text-sm mt-1">{errors.country.message}</p>
+            )}
+          </div>
+
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !isValid || !isDirty}
             className="w-full bg-[#971c61] hover:bg-[#7d1751] transition-colors text-white py-3 px-6 rounded font-medium text-center disabled:bg-gray-300 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Registering...' : 'Register Now'}

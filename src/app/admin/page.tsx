@@ -170,6 +170,15 @@ export default function AdminPage() {
                     Email
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-[var(--brand-primary)] uppercase tracking-wider">
+                    Organization
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-[var(--brand-primary)] uppercase tracking-wider">
+                    City
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-[var(--brand-primary)] uppercase tracking-wider">
+                    Country
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-[var(--brand-primary)] uppercase tracking-wider">
                     Registration Date
                   </th>
                 </tr>
@@ -182,6 +191,15 @@ export default function AdminPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {registration.email}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {registration.organization}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {registration.city}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {registration.country}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {new Date(registration.created_at || '').toLocaleString()}

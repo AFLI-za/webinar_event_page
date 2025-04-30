@@ -7,6 +7,9 @@ import { transporter, createConfirmationEmail } from '@/lib/email';
 const registrationSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
+  organization: z.string().min(2, 'Organization must be at least 2 characters'),
+  city: z.string().min(2, 'City must be at least 2 characters'),
+  country: z.string().min(2, 'Country must be at least 2 characters'),
 });
 
 export async function POST(request: NextRequest) {
@@ -23,7 +26,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, email } = result.data;
+    const { name, email, organization, city, country } = result.data;
 
     // Check if email already exists
     const { data: existingUser } = await supabase
@@ -39,13 +42,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insert into Supabase with only the existing fields
+    // Insert into Supabase with all fields
     const { data, error } = await supabase
       .from('registration')
       .insert([{
         name,
-        email
-        // Note: The reminder fields will be added to the database schema later
+        email,
+        organization,
+        city,
+        country
       }])
       .select();
 
